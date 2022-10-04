@@ -41,13 +41,11 @@ export default {
       searchText: "",
     };
   },
-  // watch: {
-  //   // Giám sát các thay đổi của biến searchText.
-  //   // Bỏ chọn phần tử đang được chọn trong danh sách.
-  //   searchText() {
-  //     this.activeIndex = -1;
-  //   },
-  // },
+  watch: {
+    searchText() {
+      this.activeIndex = -1;
+    },
+  },
   computed: {
     // Chuyển các đối tượng danh mục, trà sữa thành chuỗi để tiện cho tìm kiếm.
     contactStringsTraSua() {
@@ -56,7 +54,6 @@ export default {
         return [tenTS, giaTS, idDM].join("");
       });
     },
-
     contactStringsGioHang() {
       return this.gioHang.map((giohang) => {
         const { tenTS, giaTS, idDM, soLuongTS, tinhTrang } = giohang;
@@ -70,7 +67,6 @@ export default {
         return [tenDM].join("");
       });
     },
-
     // Trả về các danh mục, trà sữa có chứa thông tin cần tìm kiếm.
     filteredTraSua() {
       if (!this.searchText) return this.traSua;
@@ -78,13 +74,13 @@ export default {
         this.contactStringsTraSua[index].includes(this.searchText)
       );
     },
-    // activeTraSua() {
-    //   if (this.activeIndex < 0) return null;
-    //   return this.filteredTraSua[this.activeIndex];
-    // },
-    // filteredTraSuaCount() {
-    //   return this.filteredTraSua.length;
-    // },
+    activeTraSua() {
+      if (this.activeIndex < 0) return null;
+      return this.filteredTraSua[this.activeIndex];
+    },
+    filteredTraSuaCount() {
+      return this.filteredTraSua.length;
+    },
 
     filteredDanhMuc() {
       if (!this.searchText) return this.danhMuc;
@@ -98,13 +94,13 @@ export default {
         this.contactStrings[index].includes(this.searchText)
       );
     },
-    // activeDanhMuc() {
-    //   if (this.activeIndex < 0) return null;
-    //   return this.filteredDanhMuc[this.activeIndex];
-    // },
-    // filteredDanhMucCount() {
-    //   return this.filteredDanhMuc.length;
-    // },
+    activeDanhMuc() {
+      if (this.activeIndex < 0) return null;
+      return this.filteredDanhMuc[this.activeIndex];
+    },
+    filteredDanhMucCount() {
+      return this.filteredDanhMuc.length;
+    },
   },
   methods: {
     async retrieveDanhMuc() {
@@ -118,17 +114,6 @@ export default {
       this.retrieveDanhMuc();
       this.activeIndex = -1;
     },
-    // async removeAllDanhMuc() {
-    //   if (confirm("Bạn muốn xóa tất cả Liên hệ?")) {
-    //     try {
-    //       await DanhMucService.deleteAll();
-    //       this.refreshDanhMucList();
-    //     } catch (error) {
-    //       console.log(error);
-    //     }
-    //   }
-    // },
-
     async retrieveTraSua() {
       try {
         this.traSua = await TraSuaService.getAll();
@@ -151,16 +136,6 @@ export default {
       this.retrieveGioHang();
       this.activeIndex = -1;
     },
-    // async removeAllContacts() {
-    //   if (confirm("Bạn muốn xóa tất cả Liên hệ?")) {
-    //     try {
-    //       await DanhMucService.deleteAll();
-    //       this.refreshTraSuaList();
-    //     } catch (error) {
-    //       console.log(error);
-    //     }
-    //   }
-    // },
   },
   mounted() {
     this.refreshDanhMucList();

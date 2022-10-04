@@ -73,13 +73,6 @@ export default {
               v-model="trasuaLocal._id" readonly
               style="color: black; font-weight: bold"
             />
-            <Field
-              name="idTS"
-              type="hidden"
-              class="form-control mt-2"
-              v-model="trasuaLocal.giaTS" readonly
-              style="color: black; font-weight: bold"
-            />
           </button>
         </Form>
       </li>

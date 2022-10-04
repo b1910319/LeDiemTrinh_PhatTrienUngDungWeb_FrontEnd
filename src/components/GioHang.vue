@@ -33,10 +33,22 @@ export default {
       }
     },
   },
+
   data() {
     return {
       gioHangLocal: this.gioHang,
     };
+  },
+  computed: {
+    tong() {
+      let total = 0;
+      for (let i = 0; i < this.gioHang.length; i++) {
+        // total += this.gioHang.giaTS[i];
+        const gia = new Number(this.gioHang[i].giaTS);
+        total = total + gia;
+      }
+      return total;
+    },
   },
 };
 </script>
@@ -45,7 +57,7 @@ export default {
     <div
       class="alert alert-danger"
       role="alert"
-      style="font-weight: bold; text-align: center; font-size: 20px;"
+      style="font-weight: bold; text-align: center; font-size: 20px"
     >
       Giỏ Hàng
     </div>
@@ -116,7 +128,17 @@ export default {
             Thanh Toán
           </button>
         </td>
-        <td></td>
+        <td>
+          <button type="button" class="btn btn-danger" style="font-weight: bold;">
+            Tổng:
+            {{
+              Intl.NumberFormat("vi-VN", {
+                style: "currency",
+                currency: "VND",
+              }).format(tong)
+            }}
+          </button>
+        </td>
       </tbody>
     </table>
   </div>
