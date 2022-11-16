@@ -61,7 +61,7 @@
             }"
           >
             <button type="button" class="btn btn-warning" style="color: white">
-              <i class="fa-solid fa-pen-to-square"></i>
+              <i class="fa-solid fa-pen-to-square"></i> Hiệu chỉnh
             </button>
           </router-link>
         </div>

@@ -11,16 +11,17 @@
       <ErrorMessage name="tenDM" class="error-feedback" />
     </div>
     <div class="form-group">
-      <button class="btn btn-primary">
-        <i class="fa-solid fa-floppy-disk"></i>
+      <button class="btn btn-primary" style="font-weight:bold ;">
+        <i class="fa-solid fa-floppy-disk"></i> Lưu
       </button>
       <button
         v-if="danhMucLocal._id"
         type="button"
         class="ml-2 btn btn-danger"
         @click="deleteDanhMuc"
+        style="font-weight:bold ;"
       >
-        <i class="fa-solid fa-trash"></i>
+        <i class="fa-solid fa-trash"></i> Xoá
       </button>
     </div>
   </Form>

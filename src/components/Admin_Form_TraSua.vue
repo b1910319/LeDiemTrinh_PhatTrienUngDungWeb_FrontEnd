@@ -1,7 +1,7 @@
 <template>
   <Form @submit="submitTraSua" :validation-schema="traSuaFormSchema">
     <div class="form-group">
-      <label for="name">Tên: </label>
+      <label for="name" style="font-weight:bold ; color: #379237; ">Tên: </label>
       <Field
         name="tenTS"
         type="text"
@@ -11,7 +11,7 @@
       <ErrorMessage name="name" class="error-feedback" />
     </div>
     <div class="form-group">
-      <label for="email">Gía: </label>
+      <label for="email" style="font-weight:bold ; color: #379237; ">Gía: </label>
       <Field
         name="giaTS"
         type="Number"
@@ -22,12 +22,6 @@
     </div>
     <div class="form-group">
       <label for="address">Danh Mục: </label>
-      <!-- <Field
-        name="idDM"
-        type="text"
-        class="form-control"
-        v-model="traSuaLocal.idDM"
-      /> -->
       <select class="form-group" name="idDM">
         <option selected v-for="danhmuc in danhMuc" :key="danhmuc._id">
           {{ danhmuc.tenDM }}
@@ -36,16 +30,17 @@
       <ErrorMessage name="address" class="error-feedback" />
     </div>
     <div class="form-group">
-      <button class="btn btn-primary">
-        <i class="fa-solid fa-floppy-disk"></i>
+      <button class="btn btn-primary" style="font-weight:bold ;">
+        <i class="fa-solid fa-floppy-disk"></i> Lưu
       </button>
       <button
         v-if="traSuaLocal._id"
         type="button"
         class="ml-2 btn btn-danger"
         @click="deleteTraSua"
+        style="font-weight:bold ;"
       >
-        <i class="fa-solid fa-trash"></i>
+        <i class="fa-solid fa-trash"></i> Xoá
       </button>
     </div>
   </Form>

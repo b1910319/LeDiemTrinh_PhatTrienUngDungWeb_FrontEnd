@@ -29,21 +29,10 @@
           <th scope="row">{{index+1}}</th>
           <td>{{ danhmuc.tenDM }}</td>
           <td>
-            <button type="button" class="btn  btn-outline-success"><i class="fa-sharp fa-solid fa-circle-info"></i></button>
+            <button type="button" class="btn  btn-outline-success" style="font-weight:bold ;"><i class="fa-sharp fa-solid fa-circle-info"></i> Chi tiết</button>
           </td>
         </tr>
       </tbody>
     </table>
-    <!-- <ul class="list-group">
-      <li
-        class="list-group-item"
-        v-for="(trasua, index) in traSua"
-        :key="trasua._id"
-        :class="{ active: index === activeIndex }"
-        @click="updateActiveIndex(index)"
-      >
-        {{ trasua.tenTS }}
-      </li>
-    </ul> -->
   </template>
   

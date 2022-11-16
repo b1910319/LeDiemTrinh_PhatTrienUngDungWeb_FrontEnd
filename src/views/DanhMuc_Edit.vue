@@ -5,7 +5,17 @@
         <Admin_Header />
       </div>
     </div>
-    <div class="alert alert-danger mt-3" role="alert" style="font-weight: bold; text-align: center;">Hiệu chỉnh thông tin</div>
+    <div class="alert alert-danger mt-3" role="alert" style="font-weight: bold; text-align: center;">
+      <div class="row">
+        <div class="col-1">
+          <a href="/danhmuc/"
+            ><button type="button" class="btn btn-info">
+              <i class="fa-solid fa-circle-chevron-left"></i></button
+          ></a>
+        </div>
+        <div class="col-11">Hiệu chỉnh thông tin</div>
+      </div>
+    </div>
     <div class="row">
       <div class="col-2"></div>
       <div class="col-8">

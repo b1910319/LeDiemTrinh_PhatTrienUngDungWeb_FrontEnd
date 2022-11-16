@@ -43,7 +43,6 @@ export default {
     tong() {
       let total = 0;
       for (let i = 0; i < this.gioHang.length; i++) {
-        // total += this.gioHang.giaTS[i];
         const gia = new Number(this.gioHang[i].giaTS);
         total = total + gia;
       }

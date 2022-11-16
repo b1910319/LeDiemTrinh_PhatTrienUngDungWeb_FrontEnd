@@ -1,90 +1,3 @@
-<!-- <template>
-  <div class="container">
-    <div class="row">
-      <div class="col-9">
-        <Admin_Header/>
-      </div>
-      <div class="col-3">
-        <Admin_InputSearch v-model="searchText" />
-      </div>
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="alert alert-danger" role="alert" style="width: 100%; font-size: 20px; font-weight: bold; text-align: center;">
-          Thêm Danh Mục
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-6">
-          <Admin_Form_DanhMuc :danhMuc="danhMuc" @submit:danhMuc="createDanhMuc" />
-        </div>
-        <Admin_DanhMuc :danhMuc="filteredDanhMuc"/>
-        
-      </div>
-    </div>
-  </div>
-</template>
-
-<script>
-import Admin_InputSearch from "@/components/Admin_InputSearch.vue";
-import Admin_Form_DanhMuc from "@/components/Admin_Form_DanhMuc.vue";
-import Admin_DanhMuc from "@/components/Admin_DanhMuc.vue";
-import DanhMucService from "@/services/danhMuc.service";
-import Admin_Header from '@/components/Admin_Header.vue';
-export default {
-  components: {
-    Admin_InputSearch,
-    Admin_Form_DanhMuc,
-    Admin_DanhMuc,
-    Admin_Header,
-  },
-  data() {
-    return {
-      danhMuc: {},
-      activeIndex: -1,
-      searchText: "",
-    };
-  },
-  computed: {
-    contactStrings() {
-      return this.danhMuc.map((danhmuc) => {
-        const { tenDM } = danhmuc;
-        return [tenDM].join("");
-      });
-    },
-    filteredDanhMuc() {
-      if (!this.searchText) return this.danhMuc;
-      return this.danhMuc.filter((_danhMuc, index) =>
-        this.contactStrings[index].includes(this.searchText)
-      );
-    },
-  },
-  methods: {
-    async createDanhMuc(data) {
-      try {
-        await DanhMucService.create(data);
-      } catch (error) {
-        console.log(error);
-      }
-    },
-    async retrieveDanhMuc() {
-      try {
-        this.danhMuc = await DanhMucService.getAll();
-      } catch (error) {
-        console.log(error);
-      }
-    },
-    refreshDanhMucList() {
-      this.retrieveDanhMuc();
-      this.activeIndex = -1;
-    },
-  }, 
-  mounted() {
-    this.refreshDanhMucList();
-  },
-};
-</script> -->
-
 <template>
   <div class="container">
     <div class="row">
@@ -147,8 +60,8 @@ export default {
               params: { id: activeDanhMuc._id },
             }"
           >
-            <button type="button" class="btn btn-warning" style="color: white">
-              <i class="fa-solid fa-pen-to-square"></i>
+            <button type="button" class="btn btn-warning" style="color: white; font-weight: bold;" >
+              <i class="fa-solid fa-pen-to-square"></i> Hiệu chỉnh
             </button>
           </router-link>
         </div>
@@ -177,21 +90,17 @@ export default {
     };
   },
   watch: {
-    // Giám sát các thay đổi của biến searchText.
-    // Bỏ chọn phần tử đang được chọn trong danh sách.
     searchText() {
       this.activeIndex = -1;
     },
   },
   computed: {
-    // Chuyển các đối tượng contact thành chuỗi để tiện cho tìm kiếm.
     danhMucStrings() {
       return this.danhMucs.map((danhMuc) => {
         const { tenDM, thoigian } = danhMuc;
         return [tenDM, thoigian].join("");
       });
     },
-    // Trả về các contact có chứa thông tin cần tìm kiếm.
     filteredDanhMucs() {
       if (!this.searchText) return this.danhMucs;
       return this.danhMucs.filter((_danhMuc, index) =>

@@ -1,8 +1,24 @@
 <script>
 export default {
+
   props: {
     gioHang: { type: Array, default: [] },
     activeIndex: { type: Number, default: -1 },
+  },
+  data() {
+    return {
+      gioHangLocal: this.gioHang,
+    };
+  },
+  computed: {
+    tong() {
+      let total = 0;
+      for (let i = 0; i < this.gioHang.length; i++) {
+        const gia = new Number(this.gioHang[i].giaTS);
+        total = total + gia;
+      }
+      return total;
+    },
   },
 };
 </script>
@@ -14,6 +30,17 @@ export default {
           <th colspan="3" style="text-align: center">Danh Sách Đơn Hàng</th>
           <th></th>
           <th></th>
+        </tr>
+        <tr>
+          <button type="button" class="btn btn-primary" style="font-weight: bold;">
+            Tổng:
+            {{
+              Intl.NumberFormat("vi-VN", {
+                style: "currency",
+                currency: "VND",
+              }).format(tong)
+            }}
+          </button>
         </tr>
         <tr>
           <th scope="col">STT</th>
